@@ -1,36 +1,184 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PromptPDF
+
+A modern web application that leverages AI to process and interact with PDF documents. Built with Next.js, TypeScript, and cutting-edge AI/ML technologies.
+
+---
+
+## Core Features
+
+- **PDF Processing**: Upload and process PDF documents  
+- **AI-Powered Chat**: Interactive chat interface for document-based Q&A  
+- **Authentication**: Secure user authentication system  
+- **File Management**: Organize and manage uploaded PDFs  
+- **Responsive Design**: Works across desktop and mobile devices  
+
+---
+
+## Technology Stack
+
+### Frontend
+- **Next.js 15** – React framework for modern web apps  
+- **TypeScript** – Strongly-typed JavaScript for scalability  
+- **Tailwind CSS** – Utility-first styling framework  
+- **shadcn/ui** – Accessible and customizable UI components  
+- **TanStack Query** – State and data-fetching management  
+- **Framer Motion** – Smooth, modern animations  
+
+### Backend
+- **Next.js API Routes** – Serverless API endpoints  
+- **Drizzle ORM** – Type-safe database client  
+- **PostgreSQL (Neon)** – Scalable cloud database  
+- **AWS S3** – File storage for PDF uploads  
+
+### AI/ML
+- **LangChain** – Framework for building LLM-driven apps  
+- **Google Generative AI** – Model integration for contextual chat  
+- **Pinecone** – Vector database for semantic document search  
+
+---
+
+## Agile Development Overview
+
+PromptPDF was developed following **Agile methodology** to ensure adaptability, collaboration, and rapid iteration between May 30 and July 14.
+
+### Development Summary
+
+| Role | Developer | Duration | Methodology | Key Focus Areas |
+|------|------------|-----------|--------------|------------------|
+| **Lead Developer** | **Jeevakrishna Vetrivel** | **May 30 – July 14, 2025** | **Agile (Scrum + Kanban Hybrid)** | PDF ingestion, RAG integration, UI/UX design, AI pipeline optimization |
+
+### Agile Workflow Highlights
+
+- **Sprint Planning:** Organized work into 3 major sprints (Core App, AI System, UI Polish)  
+- **Daily Standups (Async):** Used GitHub Issues & Projects for task updates  
+- **CI/CD Integration:** Automated builds and testing through GitHub Actions  
+- **Iterative Testing:** Continuous feedback loop for performance and UX refinement  
+- **Documentation:** Maintained changelogs, retrospectives, and sprint notes  
+
+---
+
+## RAG (Retrieval-Augmented Generation) Architecture
+
+PromptPDF integrates a **RAG system** to enhance the accuracy and contextuality of AI-generated responses.
+
+**Workflow:**
+1. **Document Ingestion** → PDFs parsed and chunked into semantic units  
+2. **Vectorization** → Chunks embedded using Google Generative AI embeddings  
+3. **Vector Storage** → Stored in **Pinecone** for efficient semantic search  
+4. **Context Retrieval** → Relevant chunks retrieved for each user query  
+5. **Response Generation** → **LangChain** sends context to LLM for accurate answers  
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+  
+- PostgreSQL Database  
+- AWS S3 Bucket  
+- Google AI API Key  
+- Pinecone API Key  
 
+### Installation
+1. **Clone the repository**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/PromptPDF.git
+cd PromptPDF
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Set up environment variables**
+   Create a `.env.local` file in the root directory with the following variables:
+   ```env
+   DATABASE_URL=your_postgres_connection_string
+   AWS_ACCESS_KEY_ID=your_aws_access_key
+   AWS_SECRET_ACCESS_KEY=your_aws_secret_key
+   AWS_REGION=your_aws_region
+   AWS_BUCKET_NAME=your_s3_bucket_name
+   GOOGLE_AI_API_KEY=your_google_ai_api_key
+   PINECONE_API_KEY=your_pinecone_api_key
+   NEXTAUTH_SECRET=your_nextauth_secret
+   NEXTAUTH_URL=http://localhost:3000
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. **Run database migrations**
+   ```bash
+   npx drizzle-kit push:pg
+   ```
 
-## Learn More
+5. **Start the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+6. **Open [http://localhost:3000](http://localhost:3000) in your browser**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/                    # App router pages and layouts
+│   ├── api/               # API routes
+│   │   ├── chat/          # Chat API endpoints
+│   │   └── create-chat/   # Chat creation endpoints
+│   └── chat/              # Chat interface
+│       └── [chatId]/      # Individual chat sessions
+├── components/            # Reusable UI components
+├── lib/                   # Utility functions and configurations
+└── drizzle/               # Database schema and migrations
+```
 
-## Deploy on Vercel
+## Development Workflow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Branching Strategy**
+   - `main` - Production-ready code
+   - `develop` - Development integration branch
+   - `feature/*` - New features
+   - `bugfix/*` - Bug fixes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Code Style**
+   - Follow the [Next.js style guide](https://nextjs.org/docs/app/building-your-application/configuring/eslint)
+   - Use TypeScript for type safety
+   - Follow the existing code style and patterns
+
+3. **Commits**
+   - Write clear, descriptive commit messages
+   - Reference issues when applicable
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Next.js](https://nextjs.org/) - The React Framework for Production
+- [LangChain](https://www.langchain.com/) - Building applications with LLMs
+- [shadcn/ui](https://ui.shadcn.com/) - Beautifully designed components
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
+
+## Author
+
+**Jeevakrishna Vetrivel**
+- GitHub: [@Jeevakrishna](https://github.com/Jeevakrishna)
+- LinkedIn: [Jeevakrishna Vetrivel](https://linkedin.com/in/jeevakrishna73)
+- Portfolio: [Jeevakrishna Vetrivel](https://jeevakrishna-portfolio.vercel.app/)
