@@ -179,6 +179,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Author
 
 **Jeevakrishna Vetrivel**
-- GitHub: [@Jeevakrishna](https://github.com/Jeevakrishna)
 - LinkedIn: [Jeevakrishna Vetrivel](https://linkedin.com/in/jeevakrishna73)
 - Portfolio: [Jeevakrishna Vetrivel](https://jeevakrishna-portfolio.vercel.app/)
+
