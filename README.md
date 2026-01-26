@@ -16,7 +16,7 @@ A modern web application that leverages AI to process and interact with PDF docu
 
 ## Technology Stack
 
-### Frontend
+#### Frontend
 - **Next.js 15** – React framework for modern web apps  
 - **TypeScript** – Strongly-typed JavaScript for scalability  
 - **Tailwind CSS** – Utility-first styling framework  
@@ -181,4 +181,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Jeevakrishna Vetrivel**
 - LinkedIn: [Jeevakrishna Vetrivel](https://linkedin.com/in/jeevakrishna73)
 - Portfolio: [Jeevakrishna Vetrivel](https://jeevakrishna-portfolio.vercel.app/)
+
 
